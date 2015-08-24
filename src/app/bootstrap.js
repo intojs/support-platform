@@ -1,0 +1,2 @@
+
+System.import('app/app');
