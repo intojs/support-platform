@@ -6,22 +6,23 @@
 
 import angular from './adapters/angular.adapter';
 
-import AppCtrl from './app.ctrl';
+// Common,
+import common from './common/common.conf';
 
-import appTpl from './app.tpl.html!text';
+// Sections.
+import dashboard from './dashboard/dashboard.conf';
+
+// Components.
+import bug from './components/bug/bug.conf';
 
 angular.module('app', [
-		'ngRoute'
-	])
-	.config(['$routeProvider', function ($routeProvider) {
-		$routeProvider.when('/', {
-			controller: 'AppCtrl',
-			controllerAs: 'appCtrl',
-			template: appTpl
-		});
-	}])
-	.controller('AppCtrl', AppCtrl);
-
+	'ngRoute',
+	'as.sortable',
+	common.name,
+	dashboard.name,
+	bug.name
+]);
+	
 /**
  *	Bootstrap angular.
  */

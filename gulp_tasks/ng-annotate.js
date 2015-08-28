@@ -9,7 +9,12 @@ module.exports = function (opts) {
 
 	gulp.task('ng-annotate', function() {
 	  	return gulp.src(opts.dest)
-	  		.pipe(plumber())
+	  		.pipe(plumber({
+                errorHandler: function (err) {
+                    console.log(err);
+                    this.emit('end');
+                }
+            }))
 	    	.pipe(ngAnnotate())
 	    	.pipe(uglify())
 	    	.pipe(gulp.dest(distPath));

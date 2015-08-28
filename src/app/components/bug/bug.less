@@ -1,0 +1,70 @@
+.bug {
+	border: 1px solid @grey-lt;
+	padding: 10px 10px 10px 44px;
+	margin-bottom: 10px;
+    /* background: @white url('/assets/bug-ico.png') no-repeat 10px center; */
+    background-color: @white;
+	position: relative;
+
+    .id {
+        margin: 0;
+        padding: 0;
+    }
+
+    .title {
+        color: @blue-lt;
+        font-weight: bold;
+        margin: 0;
+        overflow: hidden;
+        padding:0;
+        width: 100%;
+
+        span {
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            max-width:70%;
+            display:inline-block;
+        }
+
+        span.icon {
+            background: #f00;
+            display:inline-block;
+            // max-width:50px;
+        }
+    }
+
+    .title:hover {
+        color: @blue-dk;
+    }
+
+    .view-edit-controls {
+        position: absolute;
+        height: 10px;
+        width: 20px;
+        background: red;
+        right: 0;
+        top: 0;
+    }
+
+    .truncate {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+}
+
+.bug::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-color: transparent;
+    border-style: solid;
+}
+
+.bug::before {
+    border-width: 0.6em;
+    border-left-color: @yellow;
+    border-top-color: @yellow;
+}

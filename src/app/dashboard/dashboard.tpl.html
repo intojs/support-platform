@@ -1,0 +1,52 @@
+<div id="dashboard"> 
+	
+	<div class="row">
+		
+		<div class="col-sm-8 col-sm-offset-2">
+			
+			<div class="cluster">
+				
+				<h1>Open projects</h1>
+
+				<ul as-sortable="dashboardCtrl.sortableOptions"
+					ng-model="dashboardCtrl.clusterOne">
+				    
+				    <li ng-repeat="item in dashboardCtrl.clusterOne" as-sortable-item class="as-sortable-item">
+				        
+				        <div as-sortable-item-handle class="as-sortable-item-handle">
+				             
+				             <bug title="{{item.title}}"
+				            	bug-title="item.title"
+				            	bug-id="item.id"
+				            	bug-severity="item.severity">
+				            </bug>
+				        </div>
+				    </li>
+				</ul>
+			</div><!-- /cluster -->
+
+			<div class="cluster">
+				
+				<h1>Closed projects</h1>
+				
+				<ul as-sortable="dashboardCtrl.sortableOptions"
+					ng-model="dashboardCtrl.clusterTwo">
+				    
+				    <li ng-repeat="item in dashboardCtrl.clusterTwo" as-sortable-item class="as-sortable-item">
+				        <div as-sortable-item-handle class="as-sortable-item-handle">
+
+				            <bug title="{{item.title}}"
+				            	bug-title="item.title"
+				            	bug-id="item.id"
+				            	bug-severity="item.severity">
+				            </bug>
+				        </div>
+				    </li>
+				</ul>
+			</div><!-- /cluster -->
+
+		</div><!-- /col -->
+
+	</div><!-- /row -->
+
+</div><!--/dashboard -->

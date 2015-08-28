@@ -55,18 +55,23 @@
 
 	gulp.task('watch', function() {
 
-		gulp.watch(basePath+'/index.html', browserSync.reload);
+		gulp.watch(basePath+'/**/*.html', browserSync.reload);
 
 		gulp.watch(basePath+'/app/**/*.js', browserSync.reload);
 
-		gulp.watch(basePath+'/less/**/*.less', ['less']);
+		gulp.watch(basePath+'/**/*.less', ['less']);
 
 		gulp.watch([
 			basePath + '/css/**/*.css',
 			'!'+basePath+'/css/main.css'
 		], function(ev) {
         	gulp.src(ev.path, { read: false })
-        		.pipe(plumber())
+        		.pipe(plumber({
+                errorHandler: function (err) {
+                    console.log(err);
+                    this.emit('end');
+                }
+            }))
         		.pipe(browserSync.stream());
     	});
 	});

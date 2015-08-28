@@ -21,7 +21,12 @@ System.config({
     "bootstrap": "github:twbs/bootstrap@3.3.5",
     "core-js": "npm:core-js@1.1.1",
     "jquery": "github:components/jquery@2.1.4",
+    "ng-sortable": "github:a5hik/ng-sortable@1.3.0",
     "text": "github:systemjs/plugin-text@0.0.2",
+    "github:a5hik/ng-sortable@1.3.0": {
+      "angular": "github:angular/bower-angular@1.4.4",
+      "css": "github:systemjs/plugin-css@0.1.15"
+    },
     "github:angular/bower-angular-route@1.4.4": {
       "angular": "github:angular/bower-angular@1.4.4"
     },

@@ -9,7 +9,12 @@ module.exports = function(opts) {
 
 	gulp.task('less', function() {
 		return gulp.src(opts.src)
-			.pipe(plumber())
+			.pipe(plumber({
+                errorHandler: function (err) {
+                    console.log(err);
+                    this.emit('end');
+                }
+            }))
        		.pipe(less())
         	.pipe(gulp.dest(opts.dest))
         	.pipe(browserSync.stream());

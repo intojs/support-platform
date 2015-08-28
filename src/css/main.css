@@ -1,0 +1,118 @@
+/**
+ *	--- Colors ---
+ */
+a {
+  color: #336699;
+}
+a:hover {
+  color: #003366;
+}
+p {
+  font-size: 1em;
+}
+h1 {
+  font-size: 1.4em;
+}
+h2 {
+  font-size: 1.2em;
+}
+h3,
+h4,
+h5 {
+  font-size: 1.1em;
+}
+/**
+ *	--- Main ---
+ */
+body {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 50px 0 0 0;
+  outline: none !important;
+  background: #eeeeee;
+  /* Disable text selection */
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+/**
+ *	--- Components ---
+ */
+.bug {
+  border: 1px solid #dddddd;
+  padding: 10px 10px 10px 44px;
+  margin-bottom: 10px;
+  /* background: @white url('/assets/bug-ico.png') no-repeat 10px center; */
+  background-color: #fefefe;
+  position: relative;
+}
+.bug .id {
+  margin: 0;
+  padding: 0;
+}
+.bug .title {
+  color: #336699;
+  font-weight: bold;
+  margin: 0;
+  overflow: hidden;
+  padding: 0;
+  width: 100%;
+}
+.bug .title span {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 70%;
+  display: inline-block;
+}
+.bug .title span.icon {
+  background: #f00;
+  display: inline-block;
+}
+.bug .title:hover {
+  color: #003366;
+}
+.bug .view-edit-controls {
+  position: absolute;
+  height: 10px;
+  width: 20px;
+  background: red;
+  right: 0;
+  top: 0;
+}
+.bug .truncate {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.bug::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-color: transparent;
+  border-style: solid;
+}
+.bug::before {
+  border-width: 0.6em;
+  border-left-color: #ffcc66;
+  border-top-color: #ffcc66;
+}
+/**
+ *	--- Sections ---
+ */
+#dashboard .cluster ul {
+  border: 1px dashed #cccccc;
+  min-height: 62px;
+  padding: 10px;
+  padding-bottom: 0;
+  border-radius: 6px;
+}
