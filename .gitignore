@@ -2,6 +2,10 @@
 logs
 *.log
 
+# Directories
 node_modules
 jspm_packages
 dist
+
+# Files
+src/app/app.jspm.js

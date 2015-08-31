@@ -14,9 +14,16 @@ export default function() {
 		scope: {
 			id: '=bugId',
 			title: '=bugTitle',
-			severity: '=bugSeverity'
+			severity: '=bugSeverity',
+			product: '=bugProduct',
+			version: '=bugVersion',
+			component: '=bugComponent',
+			classification: '=bugClassification',
+			statusCode: '=bugStatusCode',
+			statusName: '=bugStatusName',
+			lastUpdate: '=bugLastUpdate'
 		},
-		controller: BugCtrl,
+		controller: ['$scope', 'BugServ', BugCtrl],
 		controllerAs: 'bugCtrl',
 		template: bugTpl
 	}

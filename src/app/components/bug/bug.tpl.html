@@ -1,15 +1,48 @@
-<div class="bug">
-	
-	<p class="id">{{bugCtrl.id}}</p>
-
-	<h2 class="title">
-		<span>{{bugCtrl.title}}</span>
-		<span class="icon">12</span>
-		<span class="icon">|</span>
-		<span class="icon">12</span>
-		<!-- <span class="view-edit-controls"></span> -->
-	</h2>
+<div class="bug" ng-class="{
+	'closed-bug' : bugCtrl.statusCode == 90,
+	'sev-one': bugCtrl.severity == 1,
+	'sev-two': bugCtrl.severity == 2
+}">
+	<div class="row">
 		
-	<!-- <span>view</span>&nbsp;|&nbsp;<span>edit</span> -->	
+		<div class="col-sm-7">
+			
+			<p class="id">{{bugCtrl.id}}</p>
 
-</div>
+			<div class="title clearfix">
+				
+				<h2>{{bugCtrl.title}}</h2>
+				
+				<div class="icons">
+					<span class="view-bug-icon" title="View bug"></span>
+					<span class="spacer"></span>
+					<span class="edit-bug-icon" title="Edit bug"></span>
+				</div>
+			</div>
+
+			<p class="breadcrumb">
+				{{bugCtrl.product}}&nbsp;>&nbsp;{{bugCtrl.version}}&nbsp;>&nbsp;{{bugCtrl.component}}
+			</p>
+		</div>
+
+		<div class="col-sm-5 bug-info">
+			
+			<div class="status" ng-class="bugCtrl.statusCode == 90 ? 'open' : 'closed'">
+				<h3 class="status-code"><span class="status-badge">{{bugCtrl.statusCode}}</span>&nbsp;{{bugCtrl.statusName}}</h3>
+			</div>
+			
+			<h3 class="classification">{{bugCtrl.classification}}</h3>
+			
+			<h3 class="last-update"><span>Updated:</span>&nbsp;{{bugCtrl.lastUpdate}}</h3>
+		</div>
+
+		<div class="actions" ng-if="bugCtrl.statusCode == '30'">
+			<span class="remove-bug" title="Remove bug" ng-click="bugCtrl.deleteBug(bugCtrl.id)">
+				<span class="glyphicon glyphicon-remove"></span>
+			</span>
+			<span class="edit-bug" title="Edit bug">
+				<span class="glyphicon glyphicon-edit"></span>
+			</span>
+		</div>
+	</div><!-- /row -->
+</div><!-- /bug -->

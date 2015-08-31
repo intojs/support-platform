@@ -2,23 +2,30 @@
 	
 	<div class="row">
 		
-		<div class="col-sm-8 col-sm-offset-2">
+		<div class="col-sm-10 col-sm-offset-1">
 			
 			<div class="cluster">
 				
-				<h1>Open projects</h1>
-
-				<ul as-sortable="dashboardCtrl.sortableOptions"
+				<h1>Open bugs</h1>
+	
+				<ul as-sortable="dashboardCtrl.clusterOneOpts"
 					ng-model="dashboardCtrl.clusterOne">
 				    
 				    <li ng-repeat="item in dashboardCtrl.clusterOne" as-sortable-item class="as-sortable-item">
 				        
 				        <div as-sortable-item-handle class="as-sortable-item-handle">
 				             
-				             <bug title="{{item.title}}"
+				            <bug title="{{item.title}}"
 				            	bug-title="item.title"
 				            	bug-id="item.id"
-				            	bug-severity="item.severity">
+				            	bug-severity="item.severity"
+				            	bug-product="item.product"
+				            	bug-version="item.version"
+				            	bug-component="item.component"
+				            	bug-classification="item.classification"
+				            	bug-status-code="item.statusCode"
+				            	bug-status-name="item.statusName"
+				            	bug-last-update="item.lastUpdate">
 				            </bug>
 				        </div>
 				    </li>
@@ -27,9 +34,9 @@
 
 			<div class="cluster">
 				
-				<h1>Closed projects</h1>
+				<h1>Closed bugs</h1>
 				
-				<ul as-sortable="dashboardCtrl.sortableOptions"
+				<ul as-sortable="dashboardCtrl.clusterTwoOpts"
 					ng-model="dashboardCtrl.clusterTwo">
 				    
 				    <li ng-repeat="item in dashboardCtrl.clusterTwo" as-sortable-item class="as-sortable-item">
@@ -38,7 +45,14 @@
 				            <bug title="{{item.title}}"
 				            	bug-title="item.title"
 				            	bug-id="item.id"
-				            	bug-severity="item.severity">
+				            	bug-severity="item.severity"
+				            	bug-product="item.product"
+				            	bug-version="item.version"
+				            	bug-component="item.component"
+				            	bug-classification="item.classification"
+				            	bug-status-code="item.statusCode"
+				            	bug-status-name="item.statusName"
+				            	bug-last-update="item.lastUpdate">
 				            </bug>
 				        </div>
 				    </li>

@@ -1,30 +1,45 @@
 'use strict';
 
 class DashboardCtrl {
-	constructor($scope, BugServ) {
+	constructor(BugServ) {
 
-		this.$scope = $scope;
+        this.clusterOne = BugServ.getOpenBugs();
 
-		this.clusterOne = BugServ.getBugs();
+		this.clusterTwo = BugServ.getClosedBugs();
 
-		this.clusterTwo = [];
+        this.checkBugState = function (cluster, type) {
 
-		this.sortableOptions = {
-    		containment: '#sortable-container'
-  		};
+            if (!cluster || !type) throw new Error('DashboardCtrl: You have not supplied a cluster or a type for the checkBugState function');
 
-		this.dragControlListeners = {
-    		accept: function (sourceItemHandleScope, destSortableScope) {
-    			return true;
-    		},
-    		itemMoved: function (event) {
-    			console.log('itemMoved', event);
-    		},
-    		orderChanged: function(event) {
-    			console.log('orderChanged', event);
-    		},
-    		containment: '#dashboard'
-		};
+            if (!angular.isArray(cluster)) throw new Error('DashboardCtrl: the cluster param is not an objecy');
+
+            if (typeof type !== 'string') throw new Error('DashboardCtrl: the type param is not of type string');
+
+            cluster.filter((bug) => {
+                if (type === 'closed') {
+                    bug.statusCode = 90;
+                    bug.statusName = BugServ.closedBugStatusName();
+                }
+                if (type === 'open') {
+                    bug.statusCode = 30;
+                    bug.statusName = BugServ.openBugStatusName();
+                }
+            });
+        };
+
+		this.clusterOneOpts = {
+    		containment: '#dashboard',
+            itemMoved: (ev) => {
+                this.checkBugState(this.clusterTwo, 'closed');
+            }
+        };
+
+        this.clusterTwoOpts = {
+            containment: '#dashboard',
+            itemMoved: (ev) => {
+                this.checkBugState(this.clusterOne, 'open');
+            }
+        };
 	}
 }
 

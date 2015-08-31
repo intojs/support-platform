@@ -27,7 +27,7 @@ h5 {
 body {
   box-sizing: border-box;
   margin: 0;
-  padding: 50px 0 0 0;
+  padding: 20px 0 0 0;
   outline: none !important;
   background: #eeeeee;
   /* Disable text selection */
@@ -48,10 +48,9 @@ img {
  */
 .bug {
   border: 1px solid #dddddd;
-  padding: 10px 10px 10px 44px;
+  padding: 10px 54px 10px 44px;
   margin-bottom: 10px;
-  /* background: @white url('/assets/bug-ico.png') no-repeat 10px center; */
-  background-color: #fefefe;
+  background: #fefefe url('../assets/bug-ico.png') no-repeat 10px center;
   position: relative;
 }
 .bug .id {
@@ -59,52 +58,144 @@ img {
   padding: 0;
 }
 .bug .title {
-  color: #336699;
-  font-weight: bold;
-  margin: 0;
-  overflow: hidden;
-  padding: 0;
   width: 100%;
 }
-.bug .title span {
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+.bug .title h2 {
+  color: #336699;
+  cursor: pointer;
+  font-weight: bold;
+  float: left;
+  margin: 0;
   max-width: 70%;
-  display: inline-block;
+  overflow: hidden;
+  padding: 0;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
-.bug .title span.icon {
-  background: #f00;
-  display: inline-block;
-}
-.bug .title:hover {
+.bug .title h2:hover {
   color: #003366;
 }
-.bug .view-edit-controls {
-  position: absolute;
-  height: 10px;
-  width: 20px;
-  background: red;
-  right: 0;
-  top: 0;
+.bug .title .icons {
+  float: left;
+  padding-left: 5px;
 }
-.bug .truncate {
+.bug .title .icons span {
+  cursor: pointer;
+  display: inline-block;
+  height: 16px;
+  width: 16px;
+}
+.bug .title .icons span.spacer {
+  background-color: #333333;
+  margin: 0 5px;
+  width: 1px;
+}
+.bug .title .icons span.view-bug-icon {
+  background: url('../assets/icons-sprite.png') no-repeat -16px -16px;
+}
+.bug .title .icons span.view-bug-icon:hover {
+  background: url('../assets/icons-sprite.png') no-repeat -32px -16px;
+}
+.bug .title .icons span.edit-bug-icon {
+  background: url('../assets/icons-sprite.png') no-repeat -16px -32px;
+}
+.bug .title .icons span.edit-bug-icon:hover {
+  background: url('../assets/icons-sprite.png') no-repeat -32px -32px;
+}
+.bug .breadcrumb {
+  background: none;
+  margin: 0;
+  padding: 0;
+  text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
-  text-overflow: ellipsis;
 }
-.bug::before {
+.bug .bug-info {
+  margin-top: 10px;
+}
+.bug .bug-info h3 {
+  margin: 0 0 5px 0;
+  padding: 0;
+  font-weight: bold;
+}
+.bug .bug-info .status .status-badge {
+  padding: 0 5px;
+}
+.bug .bug-info .status.open .status-code {
+  color: #007e00;
+}
+.bug .bug-info .status.open .status-badge {
+  border: 1px solid #336699;
+  background-color: #e5e5ff;
+  padding: 0 5px;
+}
+.bug .bug-info .status.closed .status-code {
+  color: #cc3333;
+}
+.bug .bug-info .status.closed .status-badge {
+  border: 1px solid #cc3333;
+  padding: 0 5px;
+}
+.bug .bug-info .classification {
+  border: 1px solid #efd13b;
+  color: #ffcc66;
+  display: inline-block;
+  padding: 0 5px;
+}
+.bug .bug-info .last-update {
+  color: #003366;
+}
+.bug .bug-info .last-update span {
+  color: #cccccc;
+}
+@media (min-width: 768px) {
+  .bug .bug-info {
+    text-align: right;
+    margin-top: 0;
+  }
+}
+.bug .actions {
+  position: absolute;
+  z-index: 20;
+  top: 7px;
+  right: 0;
+  width: 40px;
+  text-align: center;
+}
+.bug .actions .remove-bug {
+  margin-bottom: 5px;
+}
+.bug .actions .remove-bug,
+.bug .actions .edit-bug {
+  color: #cccccc;
+  font-size: 1.3em;
+  cursor: pointer;
+  display: block;
+}
+.bug .actions .remove-bug:hover,
+.bug .actions .edit-bug:hover {
+  color: #333333;
+}
+.bug.closed-bug {
+  padding-right: 15px;
+}
+.bug.sev-two::before,
+.bug.sev-one::before {
   content: '';
   position: absolute;
   top: 0;
   left: 0;
   border-color: transparent;
   border-style: solid;
-}
-.bug::before {
   border-width: 0.6em;
+}
+.bug.sev-two::before {
   border-left-color: #ffcc66;
   border-top-color: #ffcc66;
+}
+.bug.sev-one::before {
+  border-left-color: #cc3333;
+  border-top-color: #cc3333;
 }
 /**
  *	--- Sections ---

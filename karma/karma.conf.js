@@ -14,7 +14,10 @@ module.exports = function (config) {
         },
 
         files: [
-            'jspm_packages/github/components/jquery@2.1.4/jquery.min.js'
+            'jspm_packages/github/components/jquery@2.1.4/jquery.js',
+            'jspm_packages/github/angular/bower-angular@1.4.4/angular.js',
+            'jspm_packages/github/angular/bower-angular-route@1.4.4/angular-route.js',
+            'jspm_packages/github/a5hik/ng-sortable@1.3.0/ng-sortable.js'
         ],
 
         exclude: [],

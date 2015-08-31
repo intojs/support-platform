@@ -1,10 +1,9 @@
 .bug {
-	border: 1px solid @grey-lt;
-	padding: 10px 10px 10px 44px;
-	margin-bottom: 10px;
-    /* background: @white url('/assets/bug-ico.png') no-repeat 10px center; */
-    background-color: @white;
-	position: relative;
+    border: 1px solid @grey-lt;
+    padding: 10px 54px 10px 44px;
+    margin-bottom: 10px;
+    background: @white url('../assets/bug-ico.png') no-repeat 10px center; 
+    position: relative;
 
     .id {
         margin: 0;
@@ -12,59 +11,177 @@
     }
 
     .title {
-        color: @blue-lt;
-        font-weight: bold;
-        margin: 0;
-        overflow: hidden;
-        padding:0;
         width: 100%;
 
-        span {
-            white-space: nowrap;
+        h2 {
+            color: @blue-lt;
+            cursor: pointer;
+            font-weight: bold;
+            float: left;
+            margin: 0;
+            max-width: 70%;
             overflow: hidden;
+            padding: 0;
             text-overflow: ellipsis;
-            max-width:70%;
-            display:inline-block;
+            white-space: nowrap;
         }
 
-        span.icon {
-            background: #f00;
-            display:inline-block;
-            // max-width:50px;
+        h2:hover {
+            color: @blue-dk;
+        }
+
+        .icons {
+            float: left;
+            padding-left: 5px;
+
+            span {
+                cursor: pointer;
+                display: inline-block;
+                height: 16px;
+                width: 16px;
+            }
+            
+            span.spacer {
+                background-color: @grey-dk;
+                margin: 0 5px;
+                width: 1px;
+            }
+          
+            span.view-bug-icon {
+                background: url('../assets/icons-sprite.png') no-repeat -16px -16px;
+            }
+
+            span.view-bug-icon:hover {
+                background: url('../assets/icons-sprite.png') no-repeat -32px -16px;
+            }
+
+            span.edit-bug-icon {
+                background: url('../assets/icons-sprite.png') no-repeat -16px -32px;
+            }
+
+            span.edit-bug-icon:hover {
+                background: url('../assets/icons-sprite.png') no-repeat -32px -32px;
+            }
         }
     }
 
-    .title:hover {
-        color: @blue-dk;
-    }
-
-    .view-edit-controls {
-        position: absolute;
-        height: 10px;
-        width: 20px;
-        background: red;
-        right: 0;
-        top: 0;
-    }
-
-    .truncate {
+    .breadcrumb {
+        background: none;
+        margin: 0;
+        padding: 0;
+        text-overflow: ellipsis;
         white-space: nowrap;
         overflow: hidden;
-        text-overflow: ellipsis;
+    }
+
+    .bug-info {
+        margin-top: 10px;
+
+        h3 {
+            margin: 0 0 5px 0;
+            padding: 0;
+            font-weight: bold;
+        }
+
+        .status {
+
+            .status-badge {
+                padding: 0 5px;
+            }
+        }
+
+        .status.open {            
+            .status-code {
+                color: @green;
+            }
+            .status-badge {
+                border: 1px solid @blue-lt;
+                background-color: @blue-sky;
+                padding: 0 5px;
+            }
+        }
+
+        .status.closed {
+            .status-code {
+                color: @red-dk;
+            }
+            .status-badge {
+                border: 1px solid @red-dk;
+                padding: 0 5px;
+            }
+        }
+
+        .classification {
+            border: 1px solid @yellow-lt;
+            color: @yellow;
+            display: inline-block;
+            padding: 0 5px;
+        }
+
+        .last-update {
+            color: @blue-dk;
+
+            span {
+                color: @grey;
+            }
+        }
+    }
+
+    @media (min-width: 768px) {
+        .bug-info {
+            text-align: right;
+            margin-top: 0;
+        }
+    }
+
+    .actions {
+        position: absolute;
+        z-index: 20;
+        top: 7px;
+        right: 0;
+        width: 40px;
+        text-align: center;
+    
+        .remove-bug {
+            margin-bottom: 5px;
+        }
+
+        .remove-bug,
+        .edit-bug {
+            color: @grey;
+            font-size: 1.3em;
+            cursor: pointer;
+            display: block;
+        }
+
+        .remove-bug:hover,
+        .edit-bug:hover {
+            color: @grey-dk;
+        }
     }
 }
 
-.bug::before {
+.bug.closed-bug {
+    padding-right: 15px;
+}
+
+.bug.sev-two::before,
+.bug.sev-one::before {
     content: '';
     position: absolute;
     top: 0;
     left: 0;
     border-color: transparent;
     border-style: solid;
+    border-width: 0.6em;
 }
 
-.bug::before {
-    border-width: 0.6em;
+.bug.sev-two::before {
     border-left-color: @yellow;
     border-top-color: @yellow;
+}
+
+.bug.sev-one::before {
+    border-left-color: @red-dk;
+    border-top-color: @red-dk;
 }

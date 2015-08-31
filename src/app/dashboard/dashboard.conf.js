@@ -14,6 +14,6 @@ angular.module('dashboard', [])
 			template: dashboardTpl
 		});
 	}])
-	.controller('DashboardCtrl', DashboardCtrl);
+	.controller('DashboardCtrl', ['BugServ', DashboardCtrl]);
 
 export default angular.module('dashboard');

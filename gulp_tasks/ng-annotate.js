@@ -7,16 +7,16 @@ module.exports = function (opts) {
 		uglify = require('gulp-uglify'),
 		plumber = require('gulp-plumber');
 
-	gulp.task('ng-annotate', function() {
-	  	return gulp.src(opts.dest)
+	gulp.task('annotate-jspm-build-result', function() {
+	  	return gulp.src(opts.src)
 	  		.pipe(plumber({
                 errorHandler: function (err) {
                     console.log(err);
                     this.emit('end');
                 }
             }))
-	    	.pipe(ngAnnotate())
+	    	// .pipe(ngAnnotate())
 	    	.pipe(uglify())
-	    	.pipe(gulp.dest(distPath));
+	    	.pipe(gulp.dest(opts.dest));
 	});
 };
