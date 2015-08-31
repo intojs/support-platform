@@ -1,7 +1,7 @@
 # support-platform
 Angular Support Platform
 
-The application is located here: http://
+The application is located here: http://intojs.com/support-platform/
 
 1. Download the repo
 
