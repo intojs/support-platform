@@ -2,13 +2,14 @@
  *	bug.directive.js
  */
 
-'use strict';
-
 import BugCtrl from './bug.ctrl';
 
 import bugTpl from './bug.tpl.html!text';
 
 export default function() {
+
+	'use strict';
+
 	return {
 		restrict: 'EA',
 		scope: {
@@ -26,5 +27,5 @@ export default function() {
 		controller: ['$scope', 'BugServ', BugCtrl],
 		controllerAs: 'bugCtrl',
 		template: bugTpl
-	}
+	};
 }

@@ -2,11 +2,10 @@
  *	bug.ctrl.js
  */
 
-'use strict';
-
 class BugCtrl {
 
 	constructor($scope, BugServ) {
+		
 		this.id = $scope.id;
 		this.title = $scope.title;
 		this.severity = $scope.severity;
@@ -21,7 +20,7 @@ class BugCtrl {
 		this.deleteBug = function (id) {
 			if (!id) return;
 			BugServ.deleteBug(id);
-		}
+		};
 	}
 }
 

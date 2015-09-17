@@ -2,8 +2,6 @@
  *	bug.serv.js
  */
 
-'use strict';
-
 export default function() {
 
 	this.genId = function () {
@@ -15,84 +13,84 @@ export default function() {
 	};
 
 	this.openBugStatusName =  function () {
-		return 'Open, Awaiting for Review';
+		return 'Open, Awaiting for Developer';
 	};
 
 	this.closedBugStatusName = function () {
-		return 'Closed, Verified by Filer';
-	}
+		return 'Closed, Verified by Analist';
+	};
 
 	this.openBugs = [
 		{
 			id: this.genId(),
-			title: 'Wrong error displayed when selected the issue',
+			title: 'There is a two pixel bug when shuffling',
 			severity: 1,
-			product: 'Oracle Database',
-			version: 'Enterprise Edition',
-			component: 'Maintenance Wizard',
-			classification: 'Active Participant',
-			statusCode: 30,
+			product: 'Orange Wallet System',
+			version: '1.0',
+			component: 'Carousel',
+			classification: 'IT Online',
+			statusCode: 45,
 			statusName: this.openBugStatusName(),
-			lastUpdate: '5 minutes ago'
+			lastUpdate: '6 minutes ago'
 		},{
 			id: this.genId(),
 			title: 'Wrong error displayed when selected the issue',
 			severity: 2,
-			product: 'Oracle Database',
-			version: 'Enterprise Edition',
-			component: 'Maintenance Wizard',
-			classification: 'Engineering Research',
-			statusCode: 30,
+			product: 'Orange Film',
+			version: '1.0',
+			component: 'Add cinema form',
+			classification: 'IT Online',
+			statusCode: 45,
 			statusName: this.openBugStatusName(),
-			lastUpdate: '5 minutes ago'
+			lastUpdate: '10 minutes ago'
 		},{
 			id: this.genId(),
-			title: 'Wrong error displayed when selected the issue',
+			title: 'Wrong heading one color',
 			severity: 3,
-			product: 'Oracle Database',
-			version: 'Enterprise Edition',
-			component: 'Maintenance Wizard',
-			classification: 'Active Participant',
-			statusCode: 30,
+			product: 'Shop Locator',
+			version: '2.0',
+			component: 'Header',
+			classification: 'IT Online',
+			statusCode: 45,
 			statusName: this.openBugStatusName(),
-			lastUpdate: '5 minutes ago'
+			lastUpdate: '20 minutes ago'
 		}
 	];
 
 	this.closedBugs = [
 		{
 			id: this.genId(), 
-			title: 'Wrong error displayed when selected the issue',
+			title: 'Cannot search for a registration',
 			severity: 1,
-			product: 'Oracle Database',
-			version: 'Enterprise Edition',
-			component: 'Maintenance Wizard',
-			classification: 'Active Participant',
+			product: 'Prepay Registration',
+			version: '1.0',
+			component: 'Search records',
+			classification: 'IT Online',
 			statusCode: 90,
 			statusName: this.closedBugStatusName(),
-			lastUpdate: '5 minutes ago'
+			lastUpdate: '45 minutes ago'
 		},{
 			id: this.genId(),
-			title: 'Wrong error displayed when selected the issue',
+			title: 'Wrong error displayed when loggin into the app',
 			severity: 2,
-			product: 'Oracle Database',
-			version: 'Enterprise Edition',
-			component: 'Maintenance Wizard',
-			classification: 'Engineering Research',
+			product: 'Prepay Registration',
+			version: '1.0',
+			component: 'Login form',
+			classification: 'IT Online',
 			statusCode: 90,
 			statusName: this.closedBugStatusName(),
-			lastUpdate: '5 minutes ago'
+			lastUpdate: '2 hours ago'
 		},{
 			id: this.genId(),
-			title: 'Wrong error displayed when selected the issue',
+			title: 'The logo is on the right side',
 			severity: 3,
-			product: 'Oracle Database',
-			version: 'Enterprise Edition',
-			component: 'Maintenance Wizard',
-			classification: 'Active Participant',
+			product: 'Prepay Registration',
+			version: '1.0',
+			component: 'Header',
+			classification: 'IT Online',
 			statusCode: 90,
 			statusName: this.closedBugStatusName(),
-			lastUpdate: '5 minutes ago'
+			lastUpdate: '3 minutes ago'
 		}
 	];
 
@@ -114,5 +112,5 @@ export default function() {
 			return this.closedBugs;
 		},
 		deleteBug: this.deleteBug
-	}
-};
+	};
+}

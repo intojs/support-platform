@@ -4,19 +4,9 @@
 
 	var gulp = require('gulp'),
 		browserSync = require('browser-sync'),
-		del = require('del'),
 		plumber = require('gulp-plumber'),
-		gulpif = require('gulp-if'),
 		KarmaServer = require('karma').Server,
-		runSeq = require('run-sequence'),
-		minifyCss = require('gulp-minify-css'),
-		htmlmin = require('gulp-minify-html'),
-		rev = require('gulp-rev'),
-		useref = require('gulp-useref'),
-		uglify = require('gulp-uglify'),
-		revReplace = require('gulp-rev-replace'),
-		file = require('gulp-file'),
-		exec = require('child_process').exec;
+		runSeq = require('run-sequence');
 
 	/**
 	 *  --- Settings --- 
@@ -39,8 +29,12 @@
     	}
 	});
 
-	gulp.task('clean', function(callback) {
-	  del([distPath + '/*'], callback);
+	require(tasksPath + '/js-hint.js')({
+		src: basePath + '/app/**/*.js'
+	});
+
+	require(tasksPath + '/clean.js')({
+		src: distPath + '/*'
 	});
 
 	require(tasksPath + '/less.js')({
@@ -48,73 +42,35 @@
     	dest: basePath + '/css'
 	});
 
-	gulp.task('useref', function() {
-	    var assets = useref.assets();
-	    return gulp.src('./src/index.html')
-	    	.pipe(plumber({
-		    	handleError: function(err) {
-		            console.log(err);
-		            this.emit('end');
-		        }
-		    }))
-	      	.pipe(assets)
-	        .pipe(gulpif('*.js', uglify()))
-	        .pipe(gulpif('*.css', minifyCss()))
-	        .pipe(rev())
-	        .pipe(assets.restore())
-	        .pipe(useref())
-	        .pipe(revReplace())
-	        .pipe(gulp.dest('dist'));
+	require(tasksPath + '/useref.js')({
+    	src: basePath + '/index.html',
+    	dest: distPath
 	});
 
-	gulp.task('jspm-build', function(callback) {
-		exec('jspm bundle-sfx src/app/app src/app/app.jspm.js --skip-source-maps', function(err, stdout, stderr) {
-			callback(err);
-		});
+	require(tasksPath + '/html-min.js')({
+    	src: distPath + '/index.html',
+    	dest: distPath
 	});
 
-	gulp.task('htmlmin', function() {
-		return gulp.src('./dist/index.html')
-			.pipe(plumber({
-		    	handleError: function(err) {
-		            console.log(err);
-		            this.emit('end');
-		        }
-		    }))
-			.pipe(htmlmin({
-				conditionals: true
-			}))
-		    .pipe(gulp.dest('dist'));
+	require(tasksPath + '/copy-assets.js')({
+    	src: basePath + '/assets/*',
+    	dest: distPath + '/assets'
 	});
 
-	gulp.task('copy-assets', function() {
-		return gulp.src('./src/assets/**')
-			.pipe(plumber({
-		    	handleError: function (err) {
-		            console.log(err);
-		            this.emit('end');
-		        }
-		    }))
-			.pipe(gulpif('*.css', minifyCss()))
-			.pipe(gulp.dest('dist/assets'))
+	require(tasksPath + '/copy-fonts.js')({
+    	src: basePath + '/fonts/*',
+    	dest: distPath + '/fonts'
 	});
 
-	gulp.task('copy-fonts', function() {
-		return gulp.src('./src/fonts/**')
-			.pipe(plumber({
-		    	handleError: function(err) {
-		            console.log(err);
-		            this.emit('end');
-		        }
-		    }))
-			.pipe(gulp.dest('dist/fonts'))
+	require(tasksPath + '/jspm-build.js')({
+    	src: 'src/app/app',
+    	dest: 'src/app/app.jspm.js'
 	});
 
-	gulp.task('create-empty-jspm-file', function() {
-		var str = '';
-		return gulp.src(basePath+'/app')
-			.pipe(file('app.jspm.js', str))
-			.pipe(gulp.dest(basePath+'/app'));
+	require(tasksPath + '/create-empty-jspm-file.js')({
+    	src: basePath + '/app/app.jspm.js',
+    	fileName: 'app.jspm.js',
+    	dest: basePath + '/app'
 	});
 
 	/**
@@ -125,8 +81,11 @@
 
 		gulp.watch(basePath+'/**/*.html', browserSync.reload);
 
-		gulp.watch(basePath+'/app/**/*.js', browserSync.reload);
-
+		gulp.watch([
+			basePath+'/app/**/*.js',
+			'!' + basePath+'/app/**/*.spec.js',
+		], ['js-hint', browserSync.reload]);
+		
 		gulp.watch(basePath+'/**/*.less', ['less']);
 
 		gulp.watch([
@@ -140,7 +99,7 @@
                     this.emit('end');
                 }
             }))
-        		.pipe(browserSync.stream());
+        	.pipe(browserSync.stream());
     	});
 	});
 
@@ -150,8 +109,9 @@
 
 	gulp.task('dev', function(callback) {
 		runSeq(
+			'js-hint',
 			'less',
-			['browserSync'],
+			['browser-sync'],
 			'watch',
 			callback
 		);
@@ -177,7 +137,7 @@
 			['clean'],
 			['jspm-build', 'copy-assets', 'copy-fonts', 'less'],
 			['useref'],
-			['htmlmin', 'create-empty-jspm-file'],
+			['html-min', 'create-empty-jspm-file'],
 			callback
 		);
 	});

@@ -2,8 +2,6 @@
  *	common.conf.js
  */
 
-'use strict';
-
 import angular from 'src/app/adapters/angular.adapter';
 
 import BugServ from './bug.serv';

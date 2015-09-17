@@ -1,5 +1,3 @@
-'use strict';
-
 import DashboardCtrl from './dashboard.ctrl';
 
 describe('DashboardCtrl', () => {
@@ -13,12 +11,11 @@ describe('DashboardCtrl', () => {
 				return ['bug1', 'bug2', 'bug3'];
 			},
 			closedBugStatusName: function() {
-				return 'dany'
+				return 'dany';
 			}
 		};
 
 	beforeEach(function() {
-
 		dashboardCtrl = new DashboardCtrl(BugServ);
 	});
 

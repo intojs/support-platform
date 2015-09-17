@@ -48,7 +48,7 @@ img {
  */
 .bug {
   border: 1px solid #dddddd;
-  padding: 10px 54px 10px 44px;
+  padding: 10px 54px 10px 65px;
   margin-bottom: 10px;
   background: #fefefe url('../assets/bug-ico.png') no-repeat 10px center;
   position: relative;
@@ -82,8 +82,8 @@ img {
 .bug .title .icons span {
   cursor: pointer;
   display: inline-block;
-  height: 16px;
-  width: 16px;
+  height: 22px;
+  width: 22px;
 }
 .bug .title .icons span.spacer {
   background-color: #333333;
@@ -91,16 +91,10 @@ img {
   width: 1px;
 }
 .bug .title .icons span.view-bug-icon {
-  background: url('../assets/icons-sprite.png') no-repeat -16px -16px;
-}
-.bug .title .icons span.view-bug-icon:hover {
-  background: url('../assets/icons-sprite.png') no-repeat -32px -16px;
+  background: url('../assets/view-bug.png') no-repeat center center;
 }
 .bug .title .icons span.edit-bug-icon {
-  background: url('../assets/icons-sprite.png') no-repeat -16px -32px;
-}
-.bug .title .icons span.edit-bug-icon:hover {
-  background: url('../assets/icons-sprite.png') no-repeat -32px -32px;
+  background: url('../assets/edit-bug.png') no-repeat center center;
 }
 .bug .breadcrumb {
   background: none;
@@ -205,5 +199,4 @@ img {
   min-height: 62px;
   padding: 10px;
   padding-bottom: 0;
-  border-radius: 6px;
 }

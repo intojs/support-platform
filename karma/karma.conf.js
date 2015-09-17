@@ -9,13 +9,21 @@ module.exports = function (config) {
         frameworks: ['jspm', 'jasmine'],
 
         jspm: {
-            loadFiles: ['src/**/*.spec.js'],
-            serveFiles: ['src/**/!(*spec).js']
+            loadFiles: [
+                'src/**/*.spec.js',
+                'src/**/!(*spec).js'
+            ],
+            serveFiles: [
+                'src/**/*.tpl.html'
+            ]
         },
 
         files: [
             'jspm_packages/github/components/jquery@2.1.4/jquery.js',
+            
             'jspm_packages/github/angular/bower-angular@1.4.4/angular.js',
+            'jspm_packages/github/angular/bower-angular-mocks@1.4.5/angular-mocks.js',
+            
             'jspm_packages/github/angular/bower-angular-route@1.4.4/angular-route.js',
             'jspm_packages/github/a5hik/ng-sortable@1.3.0/ng-sortable.js'
         ],

@@ -1,5 +1,3 @@
-'use strict';
-
 import angular from 'src/app/adapters/angular.adapter';
 
 import DashboardCtrl from './dashboard.ctrl';

@@ -1,5 +1,3 @@
-'use strict';
-
 class DashboardCtrl {
 	constructor(BugServ) {
 
@@ -21,7 +19,7 @@ class DashboardCtrl {
                     bug.statusName = BugServ.closedBugStatusName();
                 }
                 if (type === 'open') {
-                    bug.statusCode = 30;
+                    bug.statusCode = 45;
                     bug.statusName = BugServ.openBugStatusName();
                 }
             });
